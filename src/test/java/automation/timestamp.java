@@ -2,7 +2,6 @@ package automation;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
 import java.util.Date;
 import java.util.TimeZone;
 
@@ -20,7 +19,7 @@ public class timestamp {
         Date date = new Date();
         Timestamp ts = new Timestamp(date.getTime());
         String dateformat = SimpleDateFormat;
-        java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyMMddhhmmss");
+        java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("YYMMddhhmmss");
 
         formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
         SimpleDateFormat format = new SimpleDateFormat("HH");
