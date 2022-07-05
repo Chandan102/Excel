@@ -19,7 +19,7 @@ public class read_excel_data {
     
     public static void main(String[] args) throws IOException {
 
-        String file = "C:\\Users\\CharanKumar Thogata\\Downloads\\Vehicle Battery Low Alert.xlsx";
+        String file = "C:\\Users\\CharanKumar Thogata\\Desktop\\Excel\\read excel\\Vehicle Battery Low Alert.xlsx";
 
         FileInputStream fis = new FileInputStream(file);
         

@@ -15,10 +15,10 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class Excel_To_Word {
 
     public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
-        PrintWriter writer = new PrintWriter("D:\\data.txt", "UTF-8");
+        PrintWriter writer = new PrintWriter("C:\\Users\\CharanKumar Thogata\\Desktop\\Excel\\write excel\\data.txt", "UTF-8");
         try {
     
-            FileInputStream file = new FileInputStream(new File("C:\\Users\\CharanKumar Thogata\\Downloads\\Vehicle Battery Low Alert.xlsx"));
+            FileInputStream file = new FileInputStream(new File("C:\\Users\\CharanKumar Thogata\\Desktop\\Excel\\read excel\\Vehicle Battery Low Alert.xlsx"));
     
             //Get the workbook instance for XLS file 
             XSSFWorkbook workbook = new XSSFWorkbook (file);
@@ -50,16 +50,7 @@ public class Excel_To_Word {
                         case BOOLEAN: System.out.print(cell.getBooleanCellValue()); 
                         writer.println(cell.getBooleanCellValue());    
                         break;
-                        case BLANK:
-                            break;
-                        case ERROR:
-                            break;
-                        case FORMULA:
-                            break;
-                        case _NONE:
-                            break;
-                        default:
-                            break;
+                       
                 }
                 
             }
@@ -67,7 +58,7 @@ public class Excel_To_Word {
         }    
             
             file.close();
-            FileOutputStream out = new FileOutputStream(new File("D:\\writedatasamp.txt"));
+            FileOutputStream out = new FileOutputStream(new File("C:\\Users\\CharanKumar Thogata\\Desktop\\Excel\\write excel\\writedatasamp.txt"));
             workbook.write(out);
             out.close();
     
