@@ -1,5 +1,6 @@
 package automation;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -18,29 +19,27 @@ public class write_excel {
 
     private static final String SimpleDateFormat = null;
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         
-        String file = "C:\\Users\\CharanKumar Thogata\\Desktop\\Excel\\read excel\\Vehicle Battery Low Alert.xlsx";
+        String file = "C:\\Users\\CharanKumar Thogata\\Desktop\\Excel\\read excel\\Book1.xlsx";
         
         FileInputStream fis = new FileInputStream(file);
         
         XSSFWorkbook workbook = new XSSFWorkbook(fis);
 
-        XSSFSheet sheet = workbook.getSheet("data");
+        XSSFSheet sheet = workbook.getSheet("Sheet1");
 
         int rows = sheet.getLastRowNum();
 
         int columns = sheet.getRow(1).getLastCellNum();
 
-        for (int i=1;i<=rows;i++) {
+        for (int i=0;i<=rows;i++) {
             
             XSSFRow row = sheet.getRow(i);
 
-            for (int j = 0; j < 1; j++) {
+            for (int j = 1; j < 2; j++) {
 
                 XSSFCell cell = row.getCell(j);
-
-                //cell.setCellType(cell.setCellValue("Charan"));
 
                 Date date = new Date();
                 Timestamp ts = new Timestamp(date.getTime());
@@ -53,11 +52,12 @@ public class write_excel {
                 
 
                 cell.setCellValue(changed_date);
+                Thread.sleep(10000);
                 
             }
         }
         
-        FileOutputStream fos = new FileOutputStream(file);
+        FileOutputStream fos = new FileOutputStream(new File("C:\\Users\\CharanKumar Thogata\\Desktop\\Excel\\write excel\\Book1.xlsx"));
 
         workbook.write(fos);
 

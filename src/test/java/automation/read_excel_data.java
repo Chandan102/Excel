@@ -1,11 +1,9 @@
 package automation;
 
+import java.io.BufferedReader;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
-
-import javax.print.DocFlavor.STRING;
 
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -19,13 +17,19 @@ public class read_excel_data {
     
     public static void main(String[] args) throws IOException {
 
-        String file = "C:\\Users\\CharanKumar Thogata\\Desktop\\Excel\\read excel\\Vehicle Battery Low Alert.xlsx";
+        String file = "C:\\Users\\CharanKumar Thogata\\Desktop\\Excel\\read excel\\Book1.xlsx";
 
         FileInputStream fis = new FileInputStream(file);
+
+        BufferedReader bufRdr  = new BufferedReader(new FileReader(file));
+        
+        String line = null;
+
+        line = bufRdr.readLine();
         
         XSSFWorkbook workbook = new XSSFWorkbook(fis);
 
-        XSSFSheet sheet = workbook.getSheet("data");
+        XSSFSheet sheet = workbook.getSheet("Sheet1");
 
         int rows = sheet.getLastRowNum();
 
@@ -46,19 +50,16 @@ public class read_excel_data {
                     case NUMERIC: System.out.print(cell.getNumericCellValue());
                         break;
 
-                    case BOOLEAN: System.out.print(cell.getBooleanCellValue());    
+                    case BOOLEAN: System.out.print(cell.getBooleanCellValue());
+                        break;
+
+                    case _NONE: System.out.println(cell.getErrorCellString());
+                        break;
+                            
                 }System.out.print(" | ");
 
             }System.out.println();
         }
-        
-    }
-
-    public void write_excel() throws FileNotFoundException {
-
-        String file = "C:\\Users\\CharanKumar Thogata\\Downloads\\Vehicle Battery Low Alert.xlsx";
-
-        FileOutputStream fis = new FileOutputStream(file);
         
     }
 }
