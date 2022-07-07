@@ -18,7 +18,7 @@ public class Excel_To_Word {
         PrintWriter writer = new PrintWriter("C:\\Users\\CharanKumar Thogata\\Desktop\\Excel\\write excel\\data.txt", "UTF-8");
         try {
     
-            FileInputStream file = new FileInputStream(new File("C:\\Users\\CharanKumar Thogata\\Desktop\\Excel\\read excel\\Book1.xlsx"));
+            FileInputStream file = new FileInputStream(new File("C:\\Users\\CharanKumar Thogata\\Desktop\\Excel\\read excel\\read.xlsx"));
     
             //Get the workbook instance for XLS file 
             XSSFWorkbook workbook = new XSSFWorkbook (file);
@@ -53,12 +53,12 @@ public class Excel_To_Word {
                        
                 }
                 
-            }
+            }System.out.println();
         
         }    
             
             file.close();
-            FileOutputStream out = new FileOutputStream(new File("C:\\Users\\CharanKumar Thogata\\Desktop\\Excel\\write excel\\writedatasamp.txt"));
+            FileOutputStream out = new FileOutputStream(new File("C:\\Users\\CharanKumar Thogata\\Desktop\\Excel\\write excel\\writedatasample.txt"));
             workbook.write(out);
             out.close();
     

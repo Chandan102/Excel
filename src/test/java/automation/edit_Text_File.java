@@ -2,14 +2,27 @@ package automation;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.sql.Timestamp;
+import java.util.Date;
+import java.util.TimeZone;
+
+import javax.swing.text.DateFormatter;
 
 public class edit_Text_File {
     
-    public static void main(String[] args) {
+    private static final String SimpleDateFormat = null;
+
+    public static void main(String[] args) throws IOException {
         
-        String filepath = "C:\\Users\\CharanKumar Thogata\\Downloads\\charan.txt";
+        String filepath = "C:\\Users\\CharanKumar Thogata\\Desktop\\Excel\\read excel\\Activitypacket.txt";
+
+        FileInputStream fis = new FileInputStream(filepath);
         
         File filetobemodified = new File(filepath);
 
@@ -18,6 +31,12 @@ public class edit_Text_File {
         BufferedReader reader = null;
 
         FileWriter writer = null;
+
+        byte[] byteArray = new byte[(int)filepath.length()];
+            fis.read(byteArray);
+            String data = new String(byteArray);
+            String[] stringArray = data.split("\r\n");
+            System.out.println("Number of lines in the file are ::"+stringArray.length);
 
         try {
             reader = new BufferedReader(new FileReader(filetobemodified));
@@ -35,8 +54,13 @@ public class edit_Text_File {
             }
 
             String oldString = line.substring(46, 58);;
-            String newString = "2002";
-            String newContent = oldContent.replaceAll(oldString, newString);
+            
+            Date date = new Date();
+            Timestamp ts = new Timestamp(date.getTime());
+            String dateformat = SimpleDateFormat;
+            java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyMMddhhmmss");
+            String newString = "220707112955";
+            String newContent = oldContent.replaceFirst(oldString, newString);
             writer = new FileWriter(filetobemodified);
             writer.write(newContent);
 
